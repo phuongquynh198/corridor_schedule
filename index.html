@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Currency converter</title>
+</head>
+<div id="currency"> </div>
+</body>
+<script>
+	let currency=  document.getElementById('currency');
+async function callingFn() {
+    try {
+        const response = await fetch("https://v1.nocodeapi.com/techyprem/cx/FHNXhKRkWDCvMehl/rates/convert?amount=10&from=USD&to=Eur", {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        const json = await response.json();
+        currency.innerHTML="Success:" + JSON.stringify(json);
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+callingFn();
+<script>
+</html>
